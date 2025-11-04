@@ -1,0 +1,47 @@
+#notification {
+  position: fixed;
+  right: var(--space-md);
+  top: calc(var(--header-height) + var(--space-md));
+  // bottom: var(--header-height);
+  z-index: 11000;
+  // transition:
+  //   opacity 0.3s linear,
+  //   max-height 0.8s linear;
+  background-color: var(--gray-light);
+  width: 400px;
+  padding: var(--space-xs) var(--space-md);
+  justify-content: space-between;
+  align-items: center;
+  // box-shadow: 0 0 3px rgba(var(--dark), 0.12);
+  border: 1px solid var(--gray);
+  display: flex;
+  border-radius: var(--border-radius);
+
+  &.error {
+    background-color: var(--danger);
+    border-color: var(--danger);
+  }
+
+  &.success {
+    background-color: var(--secondary);
+    border-color: var(--secondary);
+  }
+
+  span {
+    color: var(--background);
+
+    // &.close {
+    //   margin-top: 5px;
+    // }
+  }
+
+  span:nth-of-type(2) {
+    cursor: pointer;
+    padding: 6px;
+    margin-top: 6px;
+  }
+
+  // @include for-phone-only {
+  //   width: calc(100% - var(--space-md) * 2);
+  // }
+}

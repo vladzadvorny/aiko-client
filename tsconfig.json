@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "ES6", // или "ES2015" (то же самое)
+    "module": "ES6",
+    "lib": ["ES6", "DOM"],
+
+    "allowJs": true,
+    "checkJs": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "strict": false,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": false
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}

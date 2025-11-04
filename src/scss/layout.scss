@@ -1,0 +1,66 @@
+html {
+  min-height: 100%;
+}
+
+html,
+body,
+#app {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+body {
+  // @extend .gradient;
+  // background-color: $gray;
+
+  padding-top: var(--header-height);
+}
+// header,
+// main,
+// footer {
+//   // display: flex;
+//   // justify-content: center;
+// }
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  // background-color: lightpink;
+
+  // .container {
+  //   flex-direction: column;
+  //   align-items: center;
+  // }
+}
+.container {
+  max-width: 1400px;
+  //display: flex;
+  // background: lightcoral;
+  margin-left: 0;
+  transition: margin-left 0.2s ease;
+
+  // @include for-phone-only {
+  //   width: 100%;
+  // }
+}
+
+#app.sidebar-open {
+  header .container,
+  main .container,
+  footer .container {
+    margin-left: var(--sidebar-width);
+
+    @media (max-width: 768px) {
+      margin-left: 0;
+    }
+  }
+}
+
+.loader {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  margin-top: -var(--header-height);
+}

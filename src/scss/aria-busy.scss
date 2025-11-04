@@ -1,0 +1,70 @@
+// Cursor
+[aria-busy='true'] {
+  cursor: progress;
+}
+
+// Everyting except form elements
+[aria-busy='true']:not(input, select, textarea, html) {
+  &::before {
+    display: inline-block;
+    width: 0.7em;
+    height: 0.7em;
+    border: 0.1875em solid currentColor;
+    border-radius: 1em;
+    border-right-color: transparent;
+    content: '';
+    vertical-align: text-bottom;
+    // vertical-align: -0.125em; // Visual alignment
+    animation: spinner 0.75s linear infinite;
+    opacity: 0.9;
+  }
+
+  &:not(:empty) {
+    &::before {
+      margin-right: var(--space-xs);
+      margin-left: 0;
+      margin-inline-start: 0;
+      margin-inline-end: var(--space-xs);
+    }
+  }
+
+  &:empty {
+    text-align: center;
+  }
+}
+
+// Buttons and links
+button,
+input[type='submit'],
+input[type='button'],
+input[type='reset'],
+a {
+  &[aria-busy='true'] {
+    pointer-events: none;
+  }
+}
+
+// Section
+section[aria-busy='true'],
+div[aria-busy='true'] {
+  position: relative;
+
+  &::before {
+    position: absolute;
+    left: 48.5%;
+    top: 48%;
+    display: flex;
+    z-index: 2;
+    color: var(--primary);
+    width: 1.4em;
+    height: 1.4em;
+    border-radius: 1em;
+  }
+}
+
+// Animation: rotate
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
