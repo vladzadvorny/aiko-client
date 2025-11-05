@@ -14,7 +14,7 @@ body {
   // @extend .gradient;
   // background-color: $gray;
 
-  padding-top: var(--header-height);
+  // padding-top: var(--header-height);
 }
 // header,
 // main,
@@ -26,33 +26,40 @@ main {
   flex: 1;
   display: flex;
   flex-direction: column;
-  // background-color: lightpink;
+  transition: margin 0.3s ease;
+  // min-height: 100vh;
 
-  // .container {
-  //   flex-direction: column;
-  //   align-items: center;
-  // }
+  // When left sidebar is open
+  #app.left-sidebar-open & {
+    margin-left: 250px;
+  }
+
+  // When right sidebar is open
+  #app.right-sidebar-open & {
+    margin-right: 250px;
+  }
+
+  // When both sidebars are open
+  #app.left-sidebar-open.right-sidebar-open & {
+    margin-left: 250px;
+    margin-right: 250px;
+  }
 }
+
 .container {
   max-width: 1400px;
-  //display: flex;
-  // background: lightcoral;
   margin-left: 0;
   transition: margin-left 0.2s ease;
-
-  // @include for-phone-only {
-  //   width: 100%;
-  // }
 }
 
-#app.sidebar-open {
-  header .container,
-  main .container,
-  footer .container {
-    margin-left: var(--sidebar-width);
-
-    @media (max-width: 768px) {
+// Responsive styles for mobile
+@media (max-width: 768px) {
+  main {
+    #app.left-sidebar-open &,
+    #app.right-sidebar-open &,
+    #app.left-sidebar-open.right-sidebar-open & {
       margin-left: 0;
+      margin-right: 0;
     }
   }
 }

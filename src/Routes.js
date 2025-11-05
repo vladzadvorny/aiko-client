@@ -1,5 +1,5 @@
 /* eslint-disable react/display-name */
-import { useEffect } from 'preact/hooks'
+import { useEffect, useState } from 'preact/hooks'
 import { Router, route, Route } from 'preact-router'
 import { useSnapshot } from 'valtio'
 
@@ -7,21 +7,28 @@ import Auth from './pages/Auth'
 import Chat from './pages/Chat'
 import About from './pages/About'
 
+import LeftSidebar from './components/LeftSidebar'
+import RightSidebar from './components/RightSidebar'
+
 import { state } from './store'
 
 const withMainLayout = Component => props => {
-  // const [isSidebarOpen, setIsSidebarOpen] = useState(true)
-  // const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen)
+  const [isLeftSidebarOpen, setIsLeftSidebarOpen] = useState(true)
+  const [isRightSidebarOpen, setIsRightSidebarOpen] = useState(true)
+
+  const toggleLeftSidebar = () => setIsLeftSidebarOpen(!isLeftSidebarOpen)
+  const toggleRightSidebar = () => setIsRightSidebarOpen(!isRightSidebarOpen)
 
   return (
-    // <div id="app" {...(isSidebarOpen && { className: 'sidebar-open' })}>
-    <div>
-      {/* <Header toggleSidebar={toggleSidebar} />
-      <Sidebar isOpen={isSidebarOpen} onClose={toggleSidebar} /> */}
+    <div
+      id="app"
+      className={`${isLeftSidebarOpen ? 'left-sidebar-open' : ''} ${isRightSidebarOpen ? 'right-sidebar-open' : ''}`}
+    >
+      <LeftSidebar isOpen={isLeftSidebarOpen} onToggle={toggleLeftSidebar} />
+      <RightSidebar isOpen={isRightSidebarOpen} onToggle={toggleRightSidebar} />
       <main>
         <Component {...props} />
       </main>
-      {/* <Footer /> */}
     </div>
   )
 }

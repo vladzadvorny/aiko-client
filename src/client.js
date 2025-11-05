@@ -1,5 +1,6 @@
 import { hydrate, render } from 'preact'
 
+import './scss/layout.scss'
 import './scss/classless.scss'
 
 import App from './App'
