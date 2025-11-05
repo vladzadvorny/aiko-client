@@ -4,6 +4,9 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 const RightSidebar = ({ isOpen, onToggle }) => {
   return (
     <>
+      {/* Overlay for mobile when sidebar is open */}
+      {isOpen && <div className="sidebar-overlay active" onClick={onToggle} />}
+
       <aside className={`right-sidebar ${isOpen ? 'open' : 'closed'}`}>
         <div className="sidebar-header">
           <i className="toggle-btn" onClick={onToggle}>
