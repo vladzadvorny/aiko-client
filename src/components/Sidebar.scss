@@ -7,6 +7,8 @@
   background-color: var(--light);
   transition: var(--transition);
   z-index: 1000;
+  display: flex;
+  flex-direction: column;
 
   &.open {
     transform: translateX(0);
@@ -16,25 +18,28 @@
     transform: translateX(-100%);
   }
 
-  .sidebar-content {
+  &-header {
+    display: flex;
+    align-items: center;
+    border-bottom: var(--border-width) solid var(--border-color);
+    height: var(--header-height);
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 var(--space-xs);
+  }
+
+  &-content {
     padding: var(--space-xl);
-    height: 100%;
+    flex: 1;
     position: relative;
+  }
 
-    .toggle-btn {
-      position: absolute;
-      top: var(--space-md);
-      background: none;
-      border: var(--border-width) solid var(--gray-light);
-      border-radius: var(--border-radius);
-      padding: var(--space-xs) var(--space-sm);
-      cursor: pointer;
-      font-size: var(--font-size-sm);
-
-      &:hover {
-        background-color: var(--gray-light);
-      }
-    }
+  &-footer {
+    padding: 0 var(--space-lg);
+    border-top: var(--border-width) solid var(--border-color);
+    height: var(--footer-height);
+    display: flex;
+    align-items: center;
   }
 }
 
@@ -48,8 +53,12 @@
     transform: translateX(-100%);
   }
 
-  .sidebar-content .toggle-btn {
-    right: var(--space-md);
+  .sidebar {
+    &-content {
+      .toggle-btn {
+        right: var(--space-md);
+      }
+    }
   }
 }
 
@@ -63,33 +72,39 @@
     transform: translateX(100%);
   }
 
-  .sidebar-content .toggle-btn {
-    left: var(--space-md);
+  .sidebar {
+    &-content {
+      .toggle-btn {
+        left: var(--space-md);
+      }
+    }
+  }
+}
+
+.toggle-btn {
+  background: none;
+  border-radius: var(--border-radius);
+
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+
+  &:hover {
+    background-color: var(--gray-light);
   }
 }
 
 // Floating Toggle Button Base Styles
 .floating-toggle-btn {
+  @extend .toggle-btn;
   position: fixed;
-  top: 50%;
+  top: calc(var(--header-height) / 2);
   transform: translateY(-50%);
-  background: var(--primary);
-  color: var(--background);
-  border: none;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
   z-index: 999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: var(--font-size-base);
-  box-shadow: var(--shadow);
-
-  &:hover {
-    background: var(--primary-dark);
-  }
 }
 
 // Left Floating Toggle Button

@@ -1,23 +1,28 @@
 import './Sidebar.scss'
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 
 const RightSidebar = ({ isOpen, onToggle }) => {
   return (
     <>
       <aside className={`right-sidebar ${isOpen ? 'open' : 'closed'}`}>
+        <div className="sidebar-header">
+          <i className="toggle-btn" onClick={onToggle}>
+            <FaChevronRight />
+          </i>
+          <span>header</span>
+        </div>
         <div className="sidebar-content">
           <h3>Right Sidebar</h3>
           <p>This is the right sidebar content</p>
-          <button className="toggle-btn" onClick={onToggle}>
-            {isOpen ? '→' : '←'}
-          </button>
         </div>
+        <div className="sidebar-footer">footer</div>
       </aside>
 
       {/* Floating toggle button when sidebar is closed */}
       {!isOpen && (
-        <button className="floating-toggle-btn right" onClick={onToggle}>
-          ←
-        </button>
+        <i className="floating-toggle-btn right" onClick={onToggle}>
+          <FaChevronLeft />
+        </i>
       )}
     </>
   )
