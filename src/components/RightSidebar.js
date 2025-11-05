@@ -1,4 +1,4 @@
-import './RightSidebar.scss'
+import './Sidebar.scss'
 
 const RightSidebar = ({ isOpen, onToggle }) => {
   return (

@@ -1,11 +1,10 @@
-.left-sidebar {
+// Sidebar Base Styles
+.sidebar {
   position: fixed;
   top: 0;
-  left: 0;
   height: 100vh;
   width: var(--sidebar-width);
   background-color: var(--light);
-  border-right: var(--border-width) solid var(--border-color);
   transition: var(--transition);
   z-index: 1000;
 
@@ -25,7 +24,6 @@
     .toggle-btn {
       position: absolute;
       top: var(--space-md);
-      right: var(--space-md);
       background: none;
       border: var(--border-width) solid var(--gray-light);
       border-radius: var(--border-radius);
@@ -40,10 +38,40 @@
   }
 }
 
-.floating-toggle-btn.left {
+// Left Sidebar Specific Styles
+.left-sidebar {
+  @extend .sidebar;
+  left: 0;
+  border-right: var(--border-width) solid var(--border-color);
+
+  &.closed {
+    transform: translateX(-100%);
+  }
+
+  .sidebar-content .toggle-btn {
+    right: var(--space-md);
+  }
+}
+
+// Right Sidebar Specific Styles
+.right-sidebar {
+  @extend .sidebar;
+  right: 0;
+  border-left: var(--border-width) solid var(--border-color);
+
+  &.closed {
+    transform: translateX(100%);
+  }
+
+  .sidebar-content .toggle-btn {
+    left: var(--space-md);
+  }
+}
+
+// Floating Toggle Button Base Styles
+.floating-toggle-btn {
   position: fixed;
   top: 50%;
-  left: var(--space-md);
   transform: translateY(-50%);
   background: var(--primary);
   color: var(--background);
@@ -62,4 +90,16 @@
   &:hover {
     background: var(--primary-dark);
   }
+}
+
+// Left Floating Toggle Button
+.floating-toggle-btn.left {
+  @extend .floating-toggle-btn;
+  left: var(--space-md);
+}
+
+// Right Floating Toggle Button
+.floating-toggle-btn.right {
+  @extend .floating-toggle-btn;
+  right: var(--space-md);
 }
