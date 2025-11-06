@@ -1,5 +1,6 @@
 import './Sidebar.scss'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
+import DialogList from './DialogList'
 
 const LeftSidebar = ({ isOpen, onToggle }) => {
   return (
@@ -15,8 +16,7 @@ const LeftSidebar = ({ isOpen, onToggle }) => {
           </i>
         </div>
         <div className="sidebar-content">
-          <h3>Left Sidebar</h3>
-          <p>This is the left sidebar content</p>
+          <DialogList />
         </div>
         <div className="sidebar-footer">footer</div>
       </aside>
