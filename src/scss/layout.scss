@@ -31,18 +31,18 @@ main {
 
   // When left sidebar is open
   #app.left-sidebar-open & {
-    margin-left: 250px;
+    margin-left: var(--sidebar-width);
   }
 
   // When right sidebar is open
   #app.right-sidebar-open & {
-    margin-right: 250px;
+    margin-right: var(--sidebar-width);
   }
 
   // When both sidebars are open
   #app.left-sidebar-open.right-sidebar-open & {
-    margin-left: 250px;
-    margin-right: 250px;
+    margin-left: var(--sidebar-width);
+    margin-right: var(--sidebar-width);
   }
 }
 
