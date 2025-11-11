@@ -7,14 +7,12 @@ import Auth from './pages/Auth'
 import Chat from './pages/Chat'
 import About from './pages/About'
 
-import LeftSidebar from './components/LeftSidebar'
-import RightSidebar from './components/RightSidebar'
+import Sidebar from './components/Sidebar'
 
 import { state } from './store'
 
 const withMainLayout = Component => props => {
-  const [isLeftSidebarOpen, setIsLeftSidebarOpen] = useState(true)
-  const [isRightSidebarOpen, setIsRightSidebarOpen] = useState(true)
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true)
   const [isMobile, setIsMobile] = useState(false)
 
   // Check if mobile on mount and resize
@@ -23,14 +21,12 @@ const withMainLayout = Component => props => {
       const mobile = window.innerWidth <= 768
       setIsMobile(mobile)
 
-      // Auto-close sidebars when switching to mobile
+      // Auto-close sidebar when switching to mobile
       if (mobile) {
-        setIsLeftSidebarOpen(false)
-        setIsRightSidebarOpen(false)
+        setIsSidebarOpen(false)
       } else {
-        // Auto-open sidebars when switching to desktop
-        setIsLeftSidebarOpen(true)
-        setIsRightSidebarOpen(true)
+        // Auto-open sidebar when switching to desktop
+        setIsSidebarOpen(true)
       }
     }
 
@@ -44,16 +40,11 @@ const withMainLayout = Component => props => {
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
 
-  const toggleLeftSidebar = () => setIsLeftSidebarOpen(!isLeftSidebarOpen)
-  const toggleRightSidebar = () => setIsRightSidebarOpen(!isRightSidebarOpen)
+  const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen)
 
   return (
-    <div
-      id="app"
-      className={`${isLeftSidebarOpen ? 'left-sidebar-open' : ''} ${isRightSidebarOpen ? 'right-sidebar-open' : ''} ${isMobile ? 'mobile' : 'desktop'}`}
-    >
-      <LeftSidebar isOpen={isLeftSidebarOpen} onToggle={toggleLeftSidebar} />
-      <RightSidebar isOpen={isRightSidebarOpen} onToggle={toggleRightSidebar} />
+    <div id="app" className={`${isSidebarOpen ? 'sidebar-open' : ''} ${isMobile ? 'mobile' : 'desktop'}`}>
+      <Sidebar isOpen={isSidebarOpen} onToggle={toggleSidebar} />
       <main>
         <Component {...props} />
       </main>

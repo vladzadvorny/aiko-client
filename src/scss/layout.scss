@@ -29,20 +29,9 @@ main {
   transition: margin 0.3s ease;
   // min-height: 100vh;
 
-  // When left sidebar is open
-  #app.left-sidebar-open & {
+  // When sidebar is open
+  #app.sidebar-open & {
     margin-left: var(--sidebar-width);
-  }
-
-  // When right sidebar is open
-  #app.right-sidebar-open & {
-    margin-right: var(--sidebar-width);
-  }
-
-  // When both sidebars are open
-  #app.left-sidebar-open.right-sidebar-open & {
-    margin-left: var(--sidebar-width);
-    margin-right: var(--sidebar-width);
   }
 }
 
@@ -55,9 +44,7 @@ main {
 // Responsive styles for mobile
 @media (max-width: 768px) {
   main {
-    #app.left-sidebar-open &,
-    #app.right-sidebar-open &,
-    #app.left-sidebar-open.right-sidebar-open & {
+    #app.sidebar-open & {
       margin-left: 0;
       margin-right: 0;
     }
